@@ -1,0 +1,35 @@
+# alacritty configuration
+import = [
+    "~/.config/alacritty/themes/themes/konsole_linux.toml",
+]
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0" # adjustment of window scale factor
+
+[window]
+padding = { x = 6, y = 6 }
+dynamic_padding = true
+decorations_theme_variant = "Dark"
+
+[scrolling]
+history = 2000
+
+[font]
+normal = { family = "monospace", style = "Regular" }
+size = 12
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = {shape="Underline",blinking="Always"}
+unfocused_hollow = false
+
+[mouse]
+hide_when_typing = true
+
+
+

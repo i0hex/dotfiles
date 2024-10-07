@@ -1,0 +1,73 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+# order += "ipv6"
+order += "wireless wlo1"
+# order += "ethernet enp3s0"
+order += "battery 0"
+order += "volume master"
+# order += "disk /"
+# order += "load"
+# order += "memory"
+order += "tztime local"
+
+wireless wlo1 {
+        format_up = "WiFi:%essid[%quality]"
+        format_down = "WiFi:down"
+}
+
+ethernet enp3s0 {
+        format_up = "Ethernet:%ip[%speed]"
+        format_down = "Ethernet:down"
+}
+
+battery 0 {
+        format = "Battery:%percentage[%status]"
+        format_down = "Battery:down"
+        status_chr = "charging"
+        status_bat = "discharging"
+        status_unk = "unknown"
+        status_full = "full"
+        path = "/sys/class/power_supply/BAT0/uevent"
+        threshold_type = "percentage"
+        integer_battery_capacity = true
+        low_threshold = 20
+        last_full_capacity = true
+}
+
+volume master {
+        format = "%devicename:%volume[voiced]"
+        format_muted = "%devicename:%volume[muted]"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = "%1min"
+}
+
+memory {
+        format = "%used/%total"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%Y-%m-%d[%H:%M]"
+}
