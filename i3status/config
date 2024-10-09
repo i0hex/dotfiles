@@ -11,33 +11,35 @@ general {
         interval = 5
 }
 
+order += "cpu_temperature 0"
 # order += "ipv6"
 order += "wireless wlo1"
 # order += "ethernet enp3s0"
 order += "battery 0"
 order += "volume master"
 # order += "disk /"
-# order += "load"
+order += "load"
 # order += "memory"
 order += "tztime local"
 
+cpu_temperature 0 {
+        format = "T:%degrees°C"
+        max_threshold = 42
+}
+
 wireless wlo1 {
-        format_up = "WiFi:%essid[%quality]"
-        format_down = "WiFi:down"
+        format_up = "W:%essid[%quality]"
+        format_down = "W:down"
 }
 
 ethernet enp3s0 {
-        format_up = "Ethernet:%ip[%speed]"
-        format_down = "Ethernet:down"
+        format_up = "E:%ip[%speed]"
+        format_down = "E:down"
 }
 
 battery 0 {
-        format = "Battery:%percentage[%status]"
-        format_down = "Battery:down"
-        status_chr = "charging"
-        status_bat = "discharging"
-        status_unk = "unknown"
-        status_full = "full"
+        format = "%status %percentage"
+        format_down = "No battery"
         path = "/sys/class/power_supply/BAT0/uevent"
         threshold_type = "percentage"
         integer_battery_capacity = true
@@ -46,8 +48,8 @@ battery 0 {
 }
 
 volume master {
-        format = "%devicename:%volume[voiced]"
-        format_muted = "%devicename:%volume[muted]"
+        format = "%devicename %volume"
+        format_muted = "%devicename muted(%volume)"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
@@ -59,7 +61,7 @@ disk "/" {
 }
 
 load {
-        format = "%1min"
+        format = "%5min"
 }
 
 memory {
@@ -69,5 +71,5 @@ memory {
 }
 
 tztime local {
-        format = "%Y-%m-%d[%H:%M]"
+        format = "%Y-%m-%d %H:%M"
 }

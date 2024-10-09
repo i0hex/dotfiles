@@ -60,7 +60,8 @@ bindsym $mod+Ctrl+l exec i3lock -c 323232 --nofork
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -show-icons"
+#bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -show-icons"
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
