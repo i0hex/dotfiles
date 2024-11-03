@@ -10,13 +10,14 @@ WINIT_X11_SCALE_FACTOR = "1.0" # adjustment of window scale factor
 padding = { x = 6, y = 6 }
 dynamic_padding = true
 decorations_theme_variant = "Dark"
+opacity = 0.9
 
 [scrolling]
 history = 2000
 
 [font]
 normal = { family = "monospace", style = "Regular" }
-size = 12
+size = 11
 
 [colors]
 draw_bold_text_with_bright_colors = true
