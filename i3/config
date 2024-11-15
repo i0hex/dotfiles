@@ -21,19 +21,26 @@ default_floating_border none
 
 hide_edge_borders both
 
-gaps inner 12
+gaps inner 6
+gaps outer 6
+
+set $lockscreen_picture "/home/eric/Pictures/wallpapers/wallpaper241115.png"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i /home/eric/Pictures/wallpapers/wallpaper241030.png --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i $lockscreen_picture --nofork
+
+exec --no-startup-id picom --experimental-backends -b
 
 exec --no-startup-id dunst
 
 exec --no-startup-id fcitx5
 
-exec_always feh --bg-fill /home/eric/Pictures/wallpapers/wallpaper241030.png
+exec_always --no-startup-id numlockx on
+
+exec_always feh --bg-fill /home/eric/Pictures/wallpapers/wallpaper241115.png
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -56,7 +63,7 @@ bindsym $mod+Return exec /usr/bin/alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+Ctrl+l exec i3lock -i /home/eric/Pictures/wallpapers/wallpaper241030.png --nofork
+bindsym $mod+Ctrl+l exec i3lock -i $lockscreen_picture --nofork
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
@@ -187,9 +194,7 @@ bindsym $mod+r mode "resize"
 # floating window rules
 for_window [class="QQ"] floating enable
 for_window [class="wechat"] floating enable
-for_window [title="Preview"] floating enable
 for_window [title="微信"] floating enable
-for_window [class="Xsane"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
