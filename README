@@ -1,12 +1,10 @@
 dotfiles
-
----------------------------------------------------------------------------------
+--------
 
 This repository contains configurations for programs I commonly use on Debian
 
 env
-
----------------------------------------------------------------------------------
+--------
 
 i3wm + i3status + i3lock + alacritty + rofi + ranger + dunst (No DE, use startx)
 
