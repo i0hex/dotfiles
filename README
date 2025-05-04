@@ -1,21 +1,5 @@
 dotfiles
 --------
 
-This repository contains configurations for programs I commonly use on Debian
+This repository contains configurations for programs I commonly use on Linux.
 
-env
---------
-
-i3wm + i3status + i3lock + alacritty + rofi + ranger + dunst (No DE, use startx)
-
-- OS: Debian12 (testing)
-
-- Shell: bash
-
-- WM: i3
-
-- Flie Manager: ranger
-
-- Notification: dunst
-
-- Terminal: alacritty

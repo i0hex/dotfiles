@@ -1,0 +1,12 @@
+ignore-empty-password
+show-failed-attempts
+daemonize
+
+image="$HOME/.config/sway/wallpaper/wallpaper250502.png"
+scaling=fill
+indicator-caps-lock
+
+indicator-radius=60
+indicator-thickness=10
+font=monospace
+font-size=18

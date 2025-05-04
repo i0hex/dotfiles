@@ -13,7 +13,7 @@ general {
 
 order += "cpu_temperature 0"
 # order += "ipv6"
-order += "wireless wlo1"
+order += "wireless wlp1s0"
 # order += "ethernet enp3s0"
 order += "battery 0"
 order += "volume master"
@@ -24,10 +24,10 @@ order += "tztime local"
 
 cpu_temperature 0 {
         format = "T:%degrees°C"
-        max_threshold = 42
+        max_threshold = 64
 }
 
-wireless wlo1 {
+wireless wlp1s0 {
         format_up = "W:%essid[%quality]"
         format_down = "W:down"
 }

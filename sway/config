@@ -1,0 +1,25 @@
+# Read `man 5 sway` for a complete reference.
+
+seat seat0 xcursor_theme Adwaita 20
+
+bar {
+    position top
+    status_command i3status
+}
+
+font pango:monospace 10
+floating_modifier Mod4
+
+focus_follows_mouse no
+focus_on_window_activation smart
+focus_wrapping yes
+
+default_border pixel 1
+default_floating_border pixel 1
+
+set $configpath "/home/eric/.config/sway/config.d"
+
+include $configpath/device.conf
+include $configpath/keybindings.conf
+include $configpath/startup.conf
+include $configpath/rules.conf

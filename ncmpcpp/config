@@ -1,0 +1,11 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/.music/.lyrics
+mpd_music_dir = ~/.music
+
+visualizer_in_stereo = "no";
+visualizer_data_source = "/tmp/mpd.fifo";
+visualizer_output_name = "my_fifo";
+visualizer_type = "spectrum"
+
+autocenter_mode = yes
+follow_now_playing_lyrics = yes
