@@ -1,75 +1,90 @@
 # i3status configuration file.
 # see "man i3status" for documentation.
-
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
-
 general {
         colors = true
         interval = 5
 }
 
+order += "cpu_usage"
 order += "cpu_temperature 0"
-# order += "ipv6"
+order += "memory"
 order += "wireless wlp1s0"
-# order += "ethernet enp3s0"
 order += "battery 0"
 order += "volume master"
-# order += "disk /"
+order += "disk /"
+order += "disk /home"
 order += "load"
-# order += "memory"
 order += "tztime local"
 
+cpu_usage {
+	format = "IDLE %usage"
+	max_threshold = 75
+	format_above_threshold = "BUSY %usage"
+	degraded_threshold = 25
+	format_above_degraded_threshold = "WORK %usage"
+}
+
 cpu_temperature 0 {
-        format = "T:%degrees°C"
-        max_threshold = 64
+	format = "%degrees°C"
+	max_threshold = 64
+	format_above_threshold = "HOT %degrees°C"
 }
 
 wireless wlp1s0 {
-        format_up = "W:%essid[%quality]"
-        format_down = "W:down"
+	format_up = "%essid(%quality)"
+	format_down = "WLAN"
 }
 
 ethernet enp3s0 {
-        format_up = "E:%ip[%speed]"
-        format_down = "E:down"
+	format_up = "%ip(%speed)"
+	format_down = "Ethernet"
 }
 
 battery 0 {
-        format = "%status %percentage"
-        format_down = "No battery"
-        path = "/sys/class/power_supply/BAT0/uevent"
-        threshold_type = "percentage"
-        integer_battery_capacity = true
-        low_threshold = 20
-        last_full_capacity = true
+	format = "%status %percentage"
+	format_down = "No battery"
+	path = "/sys/class/power_supply/BAT0/uevent"
+	threshold_type = "percentage"
+	integer_battery_capacity = true
+	low_threshold = 20
+	last_full_capacity = true
 }
 
 volume master {
-        format = "%devicename %volume"
-        format_muted = "%devicename muted(%volume)"
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
+	format = "%devicename %volume"
+	format_muted = "%devicename(muted) %volume"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
 }
 
 
 disk "/" {
-        format = "%avail"
+	format = "%total(%percentage_used)"
+	prefix_type = "custom"
+	low_threshold = 5
+	threshold_type = percentage_free
+	format_below_threshold = "LOW %total(%percentage_used)"
+}
+
+disk "/home" {
+	format = "%total(%percentage_used)"
+	prefix_type = "custom"
+	low_threshold = 5
+	threshold_type = percentage_free
+	format_below_threshold = "LOW %total(%percentage_used)"
 }
 
 load {
-        format = "%5min"
+	format = "%5min"
 }
 
 memory {
-        format = "%used/%total"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+	format = "%total(%percentage_used)"
+	threshold_degraded = "1G"
+	format_degraded = "LOW %total(%percentage_used)"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M"
+	format = "%Y-%m-%d %H:%M"
 }
