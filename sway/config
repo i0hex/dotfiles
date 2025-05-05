@@ -7,7 +7,7 @@ bar {
     status_command i3status
 }
 
-font pango:monospace 10
+font pango:monospace 11
 floating_modifier Mod4
 
 focus_follows_mouse no
