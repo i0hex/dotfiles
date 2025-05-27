@@ -5,14 +5,14 @@
 padding = { x = 6, y = 6 }
 dynamic_padding = true
 decorations_theme_variant = "Dark"
-opacity = 0.8
+opacity = 1
 
 [scrolling]
 history = 2000
 
 [font]
 normal = { family = "monospace", style = "Regular" }
-size = 10
+size = 18
 
 [colors]
 draw_bold_text_with_bright_colors = true

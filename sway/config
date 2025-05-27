@@ -7,17 +7,17 @@ bar {
     status_command i3status
 }
 
-font pango:monospace 10
+font pango:monospace 18
 floating_modifier Mod4
 
 focus_follows_mouse no
 focus_on_window_activation smart
 focus_wrapping yes
 
-#default_border pixel 1
-#default_floating_border pixel 1
-default_border none
-default_floating_border none
+default_border pixel 2
+default_floating_border pixel 2
+#default_border none
+#default_floating_border none
 
 set $configpath "/home/eric/.config/sway/config.d"
 
