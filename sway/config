@@ -1,6 +1,6 @@
 # Read `man 5 sway` for a complete reference.
 
-seat seat0 xcursor_theme Adwaita 24
+seat seat0 xcursor_theme Adwaita 42
 
 bar {
     position top
