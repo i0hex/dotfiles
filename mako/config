@@ -1,0 +1,16 @@
+# mako configuration file
+
+width=375
+height=180
+font=Monospace 18
+margin=8
+padding=8
+border-size=1
+# border-radius=0
+border-color=#EFEFEFFF
+text-color=#FFFFFFFF
+background-color=#2F2F2FFF
+
+anchor=top-right
+layer=overlay
+default-timeout=3000

@@ -1,6 +1,8 @@
 # i3status configuration file.
 # see "man i3status" for documentation.
 general {
+		output_format = "i3bar"
+		separator = ""
         colors = true
         interval = 5
 }
@@ -17,32 +19,32 @@ order += "load"
 order += "tztime local"
 
 cpu_usage {
-	format = "IDLE %usage"
+	format = "[IDLE %usage]"
 	max_threshold = 75
-	format_above_threshold = "BUSY %usage"
+	format_above_threshold = "[BUSY %usage]"
 	degraded_threshold = 25
-	format_above_degraded_threshold = "WORK %usage"
+	format_above_degraded_threshold = "[WORK %usage]"
 }
 
 cpu_temperature 0 {
-	format = "%degrees°C"
+	format = "[%degrees°C]"
 	max_threshold = 64
-	format_above_threshold = "HOT %degrees°C"
+	format_above_threshold = "[HOT %degrees°C]"
 }
 
 wireless wlp1s0 {
-	format_up = "%essid(%quality)"
+	format_up = "[%essid(%quality)]"
 	format_down = "WLAN"
 }
 
 ethernet enp3s0 {
-	format_up = "%ip(%speed)"
+	format_up = "[%ip(%speed)]"
 	format_down = "Ethernet"
 }
 
 battery 0 {
-	format = "%status %percentage"
-	format_down = "No battery"
+	format = "[%status %percentage]"
+	format_down = "[No battery]"
 	path = "/sys/class/power_supply/BAT0/uevent"
 	threshold_type = "percentage"
 	integer_battery_capacity = true
@@ -51,8 +53,8 @@ battery 0 {
 }
 
 volume master {
-	format = "%devicename %volume"
-	format_muted = "%devicename(muted) %volume"
+	format = "[%devicename %volume]"
+	format_muted = "[%devicename(muted) %volume]"
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
@@ -60,31 +62,32 @@ volume master {
 
 
 disk "/" {
-	format = "%total(%percentage_used)"
+	format = "[%total(%percentage_used)]"
 	prefix_type = "custom"
 	low_threshold = 5
 	threshold_type = percentage_free
-	format_below_threshold = "LOW %total(%percentage_used)"
+	format_below_threshold = "[LOW %total(%percentage_used)]"
 }
 
 disk "/home" {
-	format = "%total(%percentage_used)"
+	format = "[%total(%percentage_used)]"
 	prefix_type = "custom"
 	low_threshold = 5
 	threshold_type = percentage_free
-	format_below_threshold = "LOW %total(%percentage_used)"
+	format_below_threshold = "[LOW %total(%percentage_used)]"
 }
 
 load {
-	format = "%5min"
+	format = "[%5min]"
 }
 
 memory {
-	format = "%total(%percentage_used)"
+	format = "[%total(%percentage_used)]"
 	threshold_degraded = "1G"
-	format_degraded = "LOW %total(%percentage_used)"
+	format_degraded = "[LOW %total(%percentage_used)]"
 }
 
 tztime local {
-	format = "%Y-%m-%d %H:%M"
+	#format = "%Y-%m-%d %H:%M"
+	format = "[%a %b %d %H:%M]"
 }
