@@ -19,6 +19,9 @@ default_floating_border pixel 2
 #default_border none
 #default_floating_border none
 
+gaps outer 8
+gaps inner 8
+
 set $configpath "/home/eric/.config/sway/config.d"
 
 include $configpath/device.conf
