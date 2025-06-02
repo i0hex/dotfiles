@@ -11,7 +11,7 @@ require("mason").setup({
 
 --- mason-lspconfig configurations
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "clangd", "eslint" },
+    ensure_installed = { "lua_ls", "pyright", "clangd" },
     automatic_enable = true,
 })
 
