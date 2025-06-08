@@ -109,6 +109,7 @@ alias apti='sudo apt install'
 alias aptp='sudo apt purge'
 alias aptx='sudo apt upgrade'
 alias apta='sudo apt autoremove'
+alias aptl='sudo apt list'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
