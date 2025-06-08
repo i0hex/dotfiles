@@ -20,3 +20,6 @@ opt.smartcase = true
 
 opt.termguicolors = true
 opt.signcolumn = "yes"
+
+opt.foldenable = false
+opt.foldlevel = 99

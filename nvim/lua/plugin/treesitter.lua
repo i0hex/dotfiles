@@ -13,4 +13,5 @@ vim.api.nvim_create_autocmd({'BufEnter','BufAdd','BufNew','BufNewFile','BufWinEn
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "c", "cpp", "python", "javascript", "lua", "vim", "json", },
   highlight = { enable = true, },
+  fold = { enable = false, },
 })

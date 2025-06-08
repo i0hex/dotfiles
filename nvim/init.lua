@@ -14,3 +14,4 @@ require("plugin.comment")
 require("plugin.autopair")
 require("plugin.gitsigns")
 require("plugin.telescope")
+
