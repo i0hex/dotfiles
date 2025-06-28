@@ -48,13 +48,16 @@ return require('packer').startup(function(use)
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
+	'ray-x/lsp_signature.nvim',
   }
   use 'numToStr/Comment.nvim'
   use 'windwp/nvim-autopairs'
   use 'lewis6991/gitsigns.nvim'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+		'nvim-lua/plenary.nvim',
+	}
   }
   if packer_bootstrap then
     require('packer').sync()

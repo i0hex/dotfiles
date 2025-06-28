@@ -1,4 +1,4 @@
---- mason configurations
+-- mason configurations
 require("mason").setup({
     ui = {
         icons = {
@@ -11,25 +11,39 @@ require("mason").setup({
 
 --- mason-lspconfig configurations
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "clangd" },
+    ensure_installed = { "lua_ls", "pyright", "clangd", "neocmake" },
     automatic_enable = true,
 })
 
+local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local on_attach_signature = function(client, bufnr)
+	require('lsp_signature').on_attach({
+		bind = true,
+		hint_prefix = "➜",
+		floating_window = true,
+		max_width = 80,
+	}, bufnr)
+end
 
-require('lspconfig').lua_ls.setup({
+
+lspconfig.lua_ls.setup({
   capabilities = capabilities,
+  on_attach = on_attach_signature,
 })
 
-require('lspconfig').pyright.setup({
+lspconfig.pyright.setup({
   capabilities = capabilities,
+  on_attach = on_attach_signature,
 })
 
-require('lspconfig').clangd.setup({
+lspconfig.clangd.setup({
   capabilities = capabilities,
+  on_attach = on_attach_signature,
 })
 
-require('lspconfig').eslint.setup({
+lspconfig.neocmake.setup({
   capabilities = capabilities,
+  on_attach = on_attach_signature,
 })
 
