@@ -5,6 +5,17 @@ seat seat0 xcursor_theme Adwaita 42
 bar {
     position top
     status_command i3status
+
+	colors {
+        background #1C1C1C
+        statusline #EAEAEA
+        separator  #333333
+
+        focused_workspace  #212121 #3A3A3A #EAEAEA
+        active_workspace   #292929 #2D2D2D #C0C0C0
+        inactive_workspace #333333 #262626 #9A9A9A
+        urgent_workspace   #FF8C00 #FF5500 #FFFFFF
+    }
 }
 
 font pango:monospace 18
@@ -21,6 +32,37 @@ focus_wrapping yes
 
 # gaps outer 4
 # gaps inner 4
+
+# focused window
+set $focused_border        #212121
+set $focused_bg            #1C1C1C
+set $focused_text          #EAEAEA
+
+# unfocused window
+set $unfocused_border      #333333
+set $unfocused_bg          #2C2C2C
+set $unfocused_text        #9A9A9A
+
+# focused inactive window
+set $focused_inactive_border #292929
+set $focused_inactive_bg   #242424
+set $focused_inactive_text #C0C0C0
+
+# indicator
+set $focused_indicator     #3A3A3A
+set $focused_inactive_indicator #2D2D2D
+set $unfocused_indicator   #262626
+
+# urgent
+set $urgent_border         #FF8C00
+set $urgent_bg             #FF6A00
+set $urgent_text           #FFFFFF
+set $urgent_indicator      #FF5500
+
+client.focused $focused_border $focused_bg $focused_text $focused_indicator
+client.focused_inactive $focused_inactive_border $focused_inactive_bg $focused_inactive_text $focused_inactive_indicator
+client.unfocused $unfocused_border $unfocused_bg $unfocused_text $unfocused_indicator
+client.urgent $urgent_border $urgent_bg $urgent_text $urgent_indicator
 
 set $configpath "/home/eric/.config/sway/config.d"
 
