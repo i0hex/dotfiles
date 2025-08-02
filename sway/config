@@ -18,7 +18,7 @@ bar {
     }
 }
 
-font pango:monospace 18
+font pango:monospace 20
 floating_modifier Mod4
 
 focus_follows_mouse no
