@@ -1,7 +1,6 @@
 --- Core
 require("core.basic")
 require("core.keymap")
-require("core.colorscheme")
 
 --- Plugin
 require("plugin.plugin")

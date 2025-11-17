@@ -1,28 +1,28 @@
 -- mason configurations
 require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
     }
+  }
 })
 
 --- mason-lspconfig configurations
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "clangd", "neocmake", "rust_analyzer" },
-    automatic_enable = true,
+  ensure_installed = { "lua_ls", "pyright", "clangd", "gopls", "neocmake", "spectral", "taplo"},
+  automatic_enable = true,
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach_signature = function(client, bufnr)
-	require('lsp_signature').on_attach({
-		bind = true,
-		hint_prefix = "➜",
-		floating_window = true,
-		max_width = 80,
-	}, bufnr)
+  require('lsp_signature').on_attach({
+    bind = true,
+    hint_prefix = "➜",
+    floating_window = true,
+    max_width = 80,
+  }, bufnr)
 end
 
 
@@ -41,12 +41,23 @@ vim.lsp.config('clangd', {
   on_attach = on_attach_signature,
 })
 
+vim.lsp.config('gopls', {
+  capabilities = capabilities,
+  on_attach = on_attach_signature,
+})
+
 vim.lsp.config('neocmake', {
   capabilities = capabilities,
   on_attach = on_attach_signature,
 })
 
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config('spectral', {
   capabilities = capabilities,
   on_attach = on_attach_signature,
 })
+
+vim.lsp.config('taplo', {
+  capabilities = capabilities,
+  on_attach = on_attach_signature,
+})
+

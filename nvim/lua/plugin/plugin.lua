@@ -20,7 +20,18 @@ vim.cmd([[
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'navarasu/onedark.nvim'
+  use {
+    'maxmx03/solarized.nvim',
+    config = function()
+      vim.o.background = 'light'
+      ---@type solarized
+      local solarized = require('solarized')
+      vim.o.termguicolors = true
+      vim.o.background = 'light'
+      solarized.setup({})
+      vim.cmd.colorscheme 'solarized'
+    end
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -48,7 +59,7 @@ return require('packer').startup(function(use)
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
-	'ray-x/lsp_signature.nvim',
+    'ray-x/lsp_signature.nvim',
   }
   use 'numToStr/Comment.nvim'
   use 'windwp/nvim-autopairs'
