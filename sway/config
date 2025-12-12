@@ -11,8 +11,8 @@ focus_wrapping yes
 
 # default_border pixel 2
 # default_floating_border pixel 2
-#default_border none
-#default_floating_border none
+default_border none
+default_floating_border none
 
 # gaps outer 4
 # gaps inner 4

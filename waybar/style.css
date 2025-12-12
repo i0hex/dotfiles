@@ -1,6 +1,7 @@
 @define-color foreground #f1f2f3;
 @define-color foreground-gray #909399;
 @define-color background #212121;
+@define-color background-mask #606266;
 @define-color normal #4e9eff;
 @define-color info #67C23A;
 @define-color warn #e6a23c;
@@ -26,8 +27,9 @@
 #battery,
 #backlight,
 #bluetooth,
-#clock {
-  padding-right: 0.6em;
+#clock,
+#tray {
+  padding-right: 0.4em;
 }
 
 #mode {
@@ -42,7 +44,7 @@
 }
 
 #workspaces button:hover {
-  background-color: #606266;
+  background-color: @background-mask;
 }
 
 #workspaces button.focused {
@@ -94,7 +96,3 @@
   color: #f7768e;
 }
 */
-
-#tray {
-  padding-right: 0.4em;
-}

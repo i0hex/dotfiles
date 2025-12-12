@@ -1,13 +1,13 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 40,
+  "height": 48,
   "spacing": 4,
 
   "modules-left": ["sway/mode", "sway/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": ["sway/window"],
   "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery",
-    "backlight", "bluetooth", "tray"],
+    "backlight", "bluetooth", "clock", "tray"],
 
   "sway/workspaces": {
     "disable-scroll": true,
@@ -27,6 +27,11 @@
       "5": [],
       "6": [] 
     }
+  },
+
+  "sway/window": {
+    "format": "{}",
+    "max-length": 50
   },
 
   "network": {
@@ -93,13 +98,13 @@
   "backlight": {
     "device": "amdgpu_bl0",
     "format": "\uf185 {percent}%",
-    "tooltip": false
+    "tooltip-format": "amdgpu_bl0"
   },
 
   "clock": {
     "interval": 30,
-    "format": "{:%Y.%m.%d %a %H:%M}",
-    "tooltip": false
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%Y.%m.%d %a}" 
   },
 
   "tray": {
