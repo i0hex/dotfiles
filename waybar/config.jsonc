@@ -1,95 +1,107 @@
 {
-  // Base configurations
   "layer": "top",
   "position": "top",
   "height": 40,
   "spacing": 4,
 
-  // Module layout
-  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-left": ["sway/mode", "sway/workspaces"],
+  "modules-center": ["clock"],
   "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery",
-    "backlight", "clock", "tray"],
+    "backlight", "bluetooth", "tray"],
 
-  // Sway workspaces
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "urgent": "",
-      "focused": "",
-      "default": ""
+      "urgent": "\uf06a",
+      "focused": "\uf192",
+      "default": "\uf192"
+    },
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [] 
     }
   },
 
-  // Network
   "network": {
-    "format": "{ifname}",
-    "format-wifi": "{essid} ({signalStrength}%)",
-    "format-ethernet": "Ethernet",
-    "format-disconnected": "Offline",
-    "tooltip-format": "{ifname}:{ipaddr}/{cidr}"
+    "format": "",
+    "format-wifi": "\uf1eb {signalStrength}%",
+    "format-ethernet": "\uf0c1",
+    "format-disconnected": "\uf127",
+    "tooltip-format-wifi": "{essid}",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Offline"
   },
 
-  // CPU
   "cpu": {
     "interval": 5,
-    "format": "{usage}%",
-    "tooltip": false
+    "format": "\uf2db {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
   },
 
-  // Memory
+  "temperature": {
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["\uf2c7", "\uf2c8", "\uf2c9", "\uf2ca", "\uf2cb"]
+  },
+
+  "bluetooth": {
+    "format": "\uf294",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+
   "memory": {
     "interval": 5,
-    "format": "{used:0.1f}G/{total:0.1f}G",
-    "tooltip-format": "Usage:{percentage}%"
+    "format": "\uf0a0 {percentage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
   },
 
-  // Volume
-  "pluseaudio": {
-    "format": "{volume}%",
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "\uf026 {volume}%",
+    "format-icons": ["\uf027", "\uf028"], 
+    "max-volume": "100",
     "scroll-step": 2
   },
 
-  // Bettery
-  "bettery": {
+  "battery": {
+    "bat": "BAT0",
+    "interval": 10,
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}%",
-    "format-charging": "{capacity}%",
-    "format-plugged": "{capacity}%",
-    "tooltip-format": "{timeTo} {consumption}W"
+    "format": "{icon} {capacity}%",
+    "format-charging": "\ue55b {capacity}%",
+    "format-plugged": "\uf1e6 {capacity}%",
+    "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
   },
 
-  // Brightness
   "backlight": {
     "device": "amdgpu_bl0",
-    "format": "{percent}%",
-    "on-scroll-up": "brightnessctl set 5%+",
-    "on-scroll-down": "brightnessctl set 5%-",
-    "tooltip-format": "amdgpu_bl0"
+    "format": "\uf185 {percent}%",
+    "tooltip": false
   },
 
-  // Clock
   "clock": {
     "interval": 30,
-    "format": "{:%H:%M}",
-    "format-alt": "{:%Y-%m-%d %A}",
-    "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{:%Y.%m.%d %a %H:%M}",
+    "tooltip": false
   },
 
-  // System tray
   "tray": {
     "icon-size": 24,
     "spacing": 8

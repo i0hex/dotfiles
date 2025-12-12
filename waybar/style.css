@@ -1,106 +1,100 @@
+@define-color foreground #f1f2f3;
+@define-color foreground-gray #909399;
+@define-color background #212121;
+@define-color normal #4e9eff;
+@define-color info #67C23A;
+@define-color warn #e6a23c;
+@define-color danger #f56c6c;
+
 * {
     font-family: "NotoSans Nerd Font", "FontAwesome", sans-serif;
     font-size: 24px;
+    margin: 0;
+    padding: 0;
 }
 
 #waybar {
-    background-color: rgba(40, 40, 40, 0.9);
-    color: #ffffff;
-    border-bottom: 2px solid rgba(100, 100, 100, 0.5);
+    background-color: @background;
+    color: @foreground;
 }
 
 #workspaces,
-#mode,
-#window,
 #network,
 #cpu,
 #memory,
 #pulseaudio,
 #battery,
 #backlight,
-#clock,
-#tray {
-    padding: 0 10px;
-    margin: 4px 2px;
-    border-radius: 6px;
-    background-color: rgba(68, 68, 68, 0.5);
+#bluetooth,
+#clock {
+  padding-right: 0.6em;
+}
+
+#mode {
+  padding: 0 0.2em;
+  background-color: @normal;
 }
 
 #workspaces button {
-    color: #888;
-    padding: 0 8px;
-    border: none;
-    border-radius: 4px;
-    min-width: 20px;
+  padding: 0 0.2em;
+  color: @foreground-gray;
+  border: none;
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
+  background-color: #606266;
 }
 
 #workspaces button.focused {
-    color: white;
-    background-color: rgba(76, 175, 80, 0.7);
+  color: @info;
 }
 
 #workspaces button.urgent {
-    background-color: rgba(255, 87, 34, 0.8);
-}
-
-#window {
-    color: #e0e0e0;
-    font-weight: bold;
-    padding: 0 15px;
-}
-
-#network {
-    color: #7bd0f0;
+  color: @warn;
 }
 
 #network.disconnected {
-    color: #f7768e;
+  color: @danger;
 }
 
-#cpu {
-    color: #bb9af7; 
+.warning {
+  color: @warn;
 }
 
-#memory {
-    color: #e0af68; 
+.critical {
+  color: @danger;
 }
 
-#pulseaudio {
-    color: #9ece6a; 
+/*
+#cpu.warning {
+  color: #e0af68; 
+}
+
+#cpu.critical {
+  color: #f7768e; 
+}
+
+#memory.warning {
+  color: #e0af68; 
+}
+
+#memory.critical {
+  color: #f7768e; 
 }
 
 #pulseaudio.muted {
-    color: #f7768e; 
-}
-
-#battery {
-    color: #9ece6a; 
+  color: #f7768e; 
 }
 
 #battery.warning {
-    color: #e0af68; 
+  color: #e0af68; 
 }
 
 #battery.critical {
-    color: #f7768e; 
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #f7768e;
 }
+*/
 
-@keyframes blink {
-    to {
-        background-color: rgba(247, 118, 142, 0.3);
-    }
-}
-
-#clock {
-    color: #c0caf5; 
-    font-weight: bold;
+#tray {
+  padding-right: 0.4em;
 }
