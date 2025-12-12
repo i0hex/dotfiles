@@ -1,0 +1,96 @@
+{
+  // Base configurations
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  "spacing": 4,
+
+  // Module layout
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery",
+    "backlight", "clock", "tray"],
+
+  // Sway workspaces
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  // Network
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%)",
+    "format-ethernet": "Ethernet",
+    "format-disconnected": "Offline",
+    "tooltip-format": "{ifname}:{ipaddr}/{cidr}"
+  },
+
+  // CPU
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}%",
+    "tooltip": false
+  },
+
+  // Memory
+  "memory": {
+    "interval": 5,
+    "format": "{used:0.1f}G/{total:0.1f}G",
+    "tooltip-format": "Usage:{percentage}%"
+  },
+
+  // Volume
+  "pluseaudio": {
+    "format": "{volume}%",
+    "scroll-step": 2
+  },
+
+  // Bettery
+  "bettery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "tooltip-format": "{timeTo} {consumption}W"
+  },
+
+  // Brightness
+  "backlight": {
+    "device": "amdgpu_bl0",
+    "format": "{percent}%",
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  // Clock
+  "clock": {
+    "interval": 30,
+    "format": "{:%H:%M}",
+    "format-alt": "{:%Y-%m-%d %A}",
+    "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  // System tray
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  }
+}

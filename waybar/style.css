@@ -1,0 +1,106 @@
+* {
+    font-family: "NotoSans Nerd Font", "FontAwesome", sans-serif;
+    font-size: 20px;
+}
+
+#waybar {
+    background-color: rgba(40, 40, 40, 0.9);
+    color: #ffffff;
+    border-bottom: 2px solid rgba(100, 100, 100, 0.5);
+}
+
+#workspaces,
+#mode,
+#window,
+#network,
+#cpu,
+#memory,
+#pulseaudio,
+#battery,
+#backlight,
+#clock,
+#tray {
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 6px;
+    background-color: rgba(68, 68, 68, 0.5);
+}
+
+#workspaces button {
+    color: #888;
+    padding: 0 8px;
+    border: none;
+    border-radius: 4px;
+    min-width: 20px;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.focused {
+    color: white;
+    background-color: rgba(76, 175, 80, 0.7);
+}
+
+#workspaces button.urgent {
+    background-color: rgba(255, 87, 34, 0.8);
+}
+
+#window {
+    color: #e0e0e0;
+    font-weight: bold;
+    padding: 0 15px;
+}
+
+#network {
+    color: #7bd0f0;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#cpu {
+    color: #bb9af7; 
+}
+
+#memory {
+    color: #e0af68; 
+}
+
+#pulseaudio {
+    color: #9ece6a; 
+}
+
+#pulseaudio.muted {
+    color: #f7768e; 
+}
+
+#battery {
+    color: #9ece6a; 
+}
+
+#battery.warning {
+    color: #e0af68; 
+}
+
+#battery.critical {
+    color: #f7768e; 
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(247, 118, 142, 0.3);
+    }
+}
+
+#clock {
+    color: #c0caf5; 
+    font-weight: bold;
+}
