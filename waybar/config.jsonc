@@ -6,7 +6,7 @@
 
   "modules-left": ["sway/mode", "sway/workspaces"],
   "modules-center": ["sway/window"],
-  "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery",
+  "modules-right": ["network", "cpu", "temperature", "memory", "pulseaudio", "battery",
     "backlight", "bluetooth", "clock", "tray"],
 
   "sway/workspaces": {
@@ -55,7 +55,11 @@
 
   "temperature": {
     "format": "{icon} {temperatureC}°C",
-    "format-icons": ["\uf2c7", "\uf2c8", "\uf2c9", "\uf2ca", "\uf2cb"]
+    "format-icons": ["\uf2cb", "\uf2ca", "\uf2c9", "\uf2c8", "\uf2c7"],
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
   },
 
   "bluetooth": {
