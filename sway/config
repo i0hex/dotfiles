@@ -2,7 +2,7 @@
 
 seat seat0 xcursor_theme Adwaita 42
 
-font pango:NotoSansM Nerd Font Mono 20
+font pango:Hack 20
 floating_modifier Mod4
 
 focus_follows_mouse no

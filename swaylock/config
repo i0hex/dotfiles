@@ -8,5 +8,5 @@ indicator-caps-lock
 
 indicator-radius=60
 indicator-thickness=10
-font=NotoSansM Nerd Font Mono
+font=Hack
 font-size=20
