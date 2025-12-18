@@ -1,7 +1,7 @@
 @define-color foreground #f1f2f3;
-@define-color foreground-gray #909399;
 @define-color background #212121;
-@define-color background-mask #606266;
+@define-color mask #606266;
+@define-color gray #909399;
 @define-color normal #4e9eff;
 @define-color info #67C23A;
 @define-color warn #e6a23c;
@@ -40,20 +40,21 @@
 
 #workspaces button {
   padding: 0 0.2em;
-  color: @foreground-gray;
+  color: @foreground;
   border: none;
+  border-radius: 0;
 }
 
 #workspaces button:hover {
-  background-color: @background-mask;
+  background-color: @mask;
 }
 
 #workspaces button.focused {
-  color: @info;
+  background-color: @info;
 }
 
 #workspaces button.urgent {
-  color: @warn;
+  background-color: @warn;
 }
 
 #network.disconnected {

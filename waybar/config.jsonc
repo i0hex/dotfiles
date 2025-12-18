@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 42,
+  "height": 38,
   "spacing": 4,
 
   "modules-left": ["sway/mode", "sway/workspaces"],
@@ -14,19 +14,14 @@
     "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "urgent": "\uf06a",
-      "focused": "\uf192",
-      "default": "\uf192"
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6 
     },
-    "sort-by-number": true,
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [] 
-    }
+    "sort-by-number": true
   },
 
   "sway/window": {
