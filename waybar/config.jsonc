@@ -1,13 +1,13 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 38,
+  "height": 48,
   "spacing": 4,
 
-  "modules-left": ["sway/mode", "sway/workspaces"],
-  "modules-center": ["sway/window"],
+  "modules-left": ["sway/mode", "sway/workspaces", "sway/window"],
+  "modules-center": ["clock"],
   "modules-right": ["network", "cpu", "temperature", "memory", "pulseaudio", "battery",
-    "backlight", "bluetooth", "clock", "tray"],
+    "backlight", "bluetooth", "tray"],
 
   "sway/workspaces": {
     "disable-scroll": true,

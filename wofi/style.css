@@ -1,0 +1,52 @@
+@define-color foreground #f1f2f3;
+@define-color background #212121;
+
+window {
+  background-color: @background;
+}
+
+#outer-box {
+  margin: 12px;
+}
+
+#input {
+  margin: 12px 8px;
+  border: none;
+  border-radius: 0px;
+  padding: 12px 6px;
+  background-color: #333333;
+}
+
+#input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+#inner-box {
+  margin: 0px 8px;
+}
+
+#text {
+  margin: 4px;
+  color: @foreground;
+  border: none;
+}
+
+#scroll {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+#entry {
+  padding: 12px 6px;
+}
+
+#entry:selected {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: rgba(96, 98, 102, 0.4); 
+}

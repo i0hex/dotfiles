@@ -3,7 +3,6 @@
 @define-color mask #606266;
 @define-color gray #909399;
 @define-color normal #4e9eff;
-@define-color info #67C23A;
 @define-color warn #e6a23c;
 @define-color danger #f56c6c;
 
@@ -30,7 +29,7 @@
 #bluetooth,
 #clock,
 #tray {
-  padding-right: 0.2em;
+  padding-right: 0.6em;
 }
 
 #mode {
@@ -39,18 +38,15 @@
 }
 
 #workspaces button {
-  padding: 0 0.2em;
+  padding: 0 0.6em;
   color: @foreground;
   border: none;
   border-radius: 0;
 }
 
-#workspaces button:hover {
-  background-color: @mask;
-}
-
 #workspaces button.focused {
-  background-color: @info;
+  border-top: 4px solid @mask;
+  background-color: rgba(96, 98, 102, 0.4);
 }
 
 #workspaces button.urgent {
