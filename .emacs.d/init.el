@@ -28,9 +28,16 @@
 ;; ------ Package management ------
 (require 'package)
 (setq package-archives
-  '(("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-    ("gnu"   . "https://mirrors.ustc.edu.cn/elpa/gnu/")
-    ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
+  '(;;("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+    ;;("gnu"   . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+    ;;("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")
+    ;;("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+    ;;("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+    ;;("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+    ("melpa" . "https://melpa.org/packages/") 
+    ("gnu"   . "https://elpa.gnu.org/packages/")
+    ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+    ))
 
 (package-initialize)
 (setq package-archive-priorities
@@ -114,6 +121,7 @@
   :hook ((python-mode . lsp-deferred)
          (c-mode . lsp-deferred)
          (c++-mode . lsp-deferred)
+	 (go-mode . lsp-deferred)
          (js-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
          (typescript-mode . lsp-deferred)
@@ -151,6 +159,15 @@
   :after python-mode
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
+;; ------ Go Configuration ------
+(use-package go-mode
+  :mode "\\.go\\'"
+  :hook ((go-mode . (lambda ()
+                      (setq indent-tabs-mode t)
+                      (setq tab-width 4))))
+  :config
+  (setq gofmt-command "goimports"))
+
 ;; ------ C/C++ Configuration ------
 (add-hook 'c-mode-hook
           (lambda ()
@@ -164,7 +181,6 @@
                   indent-tabs-mode nil
                   tab-width 4)))
 
-;; FIXED: Correct :mode syntax for cmake-mode
 (use-package cmake-mode
   :mode ("\\.cmake\\'" "CMakeLists\\.txt\\'"))
 
@@ -248,6 +264,8 @@
                        (file-name-sans-extension file-name))))
      ((string-match "\\.js$" file-name)
       (compile (format "node %s" file-name)))
+     ((string-match "\\.go$" file-name)
+      (compile (format "go run %s" file-name)))
      (t (message "No runner defined for this file type")))))
 
 (global-set-key (kbd "C-c r") 'run-current-file)
