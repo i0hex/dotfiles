@@ -48,7 +48,7 @@ client.focused_inactive $focused_inactive_border $focused_inactive_bg $focused_i
 client.unfocused $unfocused_border $unfocused_bg $unfocused_text $unfocused_indicator
 client.urgent $urgent_border $urgent_bg $urgent_text $urgent_indicator
 
-set $configpath "/home/eric/.config/sway/config.d"
+set $configpath "$HOME/.config/sway/config.d"
 
 include $configpath/device.conf
 include $configpath/keybindings.conf
