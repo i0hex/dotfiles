@@ -91,12 +91,13 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias aptu='sudo apt update'
-alias apts='sudo apt search'
-alias apti='sudo apt install'
-alias aptp='sudo apt purge'
-alias aptx='sudo apt upgrade'
-alias apta='sudo apt autoremove'
+alias spu='sudo apt update'
+alias sps='sudo apt search'
+alias spi='sudo apt install'
+alias spp='sudo apt purge'
+alias spx='sudo apt upgrade'
+alias spr='sudo apt autoremove'
+alias spl='sudo apt list'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -121,3 +122,15 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="/home/eric/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export PATH=$PATH:$HOME/go/bin

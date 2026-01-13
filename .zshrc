@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="candy"
+ZSH_THEME="minimal"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -103,14 +103,26 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias aptu='sudo apt update'
-alias apts='sudo apt search'
-alias apti='sudo apt install'
-alias aptp='sudo apt purge'
-alias aptx='sudo apt upgrade'
-alias apta='sudo apt autoremove'
-alias aptl='sudo apt list'
+alias spu='sudo apt update'
+alias sps='sudo apt search'
+alias spi='sudo apt install'
+alias spp='sudo apt purge'
+alias spx='sudo apt upgrade'
+alias spr='sudo apt autoremove'
+alias spl='sudo apt list'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="/home/eric/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export PATH=$PATH:$HOME/go/bin
