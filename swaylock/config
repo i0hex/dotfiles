@@ -2,7 +2,7 @@ ignore-empty-password
 show-failed-attempts
 daemonize
 
-image="$HOME/.config/sway/wallpaper/wallpaper260113.png"
+image="$HOME/.config/sway/wallpaper/wallpaper260322.png"
 scaling=fill
 indicator-caps-lock
 
