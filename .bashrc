@@ -91,13 +91,13 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias spu='sudo apt update'
-alias sps='sudo apt search'
-alias spi='sudo apt install'
-alias spp='sudo apt purge'
-alias spx='sudo apt upgrade'
-alias spr='sudo apt autoremove'
-alias spl='sudo apt list'
+alias deb-u='sudo apt update'
+alias deb-s='sudo apt search'
+alias deb-i='sudo apt install'
+alias deb-p='sudo apt purge'
+alias deb-x='sudo apt upgrade'
+alias deb-ar='sudo apt autoremove'
+alias deb-l='sudo apt list'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -134,3 +134,4 @@ esac
 # pnpm end
 
 export PATH=$PATH:$HOME/go/bin
+. "$HOME/.cargo/env"

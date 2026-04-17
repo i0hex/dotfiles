@@ -103,13 +103,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias spu='sudo apt update'
-alias sps='sudo apt search'
-alias spi='sudo apt install'
-alias spp='sudo apt purge'
-alias spx='sudo apt upgrade'
-alias spr='sudo apt autoremove'
-alias spl='sudo apt list'
+alias deb-u='sudo apt update'
+alias deb-s='sudo apt search'
+alias deb-i='sudo apt install'
+alias deb-p='sudo apt purge'
+alias deb-x='sudo apt upgrade'
+alias deb-ar='sudo apt autoremove'
+alias deb-l='sudo apt list'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
