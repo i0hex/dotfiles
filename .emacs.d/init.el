@@ -1,31 +1,32 @@
 ;; ~/.emacs.d/init.el
-;; ------ Core configurations ------
-(display-time-mode t)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(setq inhibit-startup-screen t)
-(set-face-attribute 'default nil :font "Hack-18")
+;; Core configurations
+(display-time-mode t)	; Show current time in the mode line
+(menu-bar-mode -1)	; Disable menu bar (can be temporarily shown with F10)
+(tool-bar-mode -1)	; Disable toolbar
+(scroll-bar-mode -1)	; Disable scrollbar
+(setq inhibit-startup-screen t)	; Suppress the startup welcome screen
+(set-face-attribute 'default nil :font "Hack-18") ; Set default font to Hack size 18
 
+;; Use UTF-8 globally
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(global-display-line-numbers-mode t)
-(setq column-number-mode t)
-;; (global-hl-line-mode t)
-(show-paren-mode t)
-(setq show-paren-delay 0)
-(electric-indent-mode t)
-(delete-selection-mode t)
+(global-display-line-numbers-mode t)  ; Show line numbers globally
+(setq column-number-mode t)	      ; Show Column number in the mode line
+;; (global-hl-line-mode t)	      ; Highlight current line
+(show-paren-mode t)		      ; Highlight matching parentheses
+(setq show-paren-delay 0)	      ; Highlight immediately, no delay
+(electric-indent-mode t)	      ; Auto-indent (e.g., after pressing Enter)
+(delete-selection-mode t)	      ; Typing over a selected region replaces it
 
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+(setq make-backup-files nil)	      ; Do not create .~ backup file
+(setq auto-save-default nil)	      ; Do not create # auto-save file
 
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 100000000)    ; Increase GC threshold (~100 MB) for faster startup
 
-;; ------ Package management ------
+;; Package management
 (require 'package)
 (setq package-archives
   '(;;("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
@@ -37,9 +38,9 @@
     ("melpa" . "https://melpa.org/packages/") 
     ("gnu"   . "https://elpa.gnu.org/packages/")
     ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-    ))
+    ))	; Add MELPA, GNU and NOGNU official archives
 
-(package-initialize)
+(package-initialize)  ; Initialize the package system
 (setq package-archive-priorities
       '(("melpa" . 10)
         ("gnu" . 10)
@@ -50,11 +51,11 @@
   (package-install 'use-package))
 
 (require 'use-package)
-(setq use-package-always-ensure t)
+(setq use-package-always-ensure t)  ; Automatically install missing packages when using use-package
 
-(load-theme 'tango-dark t)
+(load-theme 'tango-dark t)  ; Load the Tango Dark theme
 
-;; ------ UI Enhancements ------
+;; UI Enhancements
 (use-package which-key
   :init (which-key-mode)
   :config
@@ -70,7 +71,7 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
-;; ------ Core Extensions ------
+;; Core Extensions
 (use-package exec-path-from-shell
   :ensure t
   :init
@@ -115,13 +116,13 @@
 (use-package magit
   :bind ("C-x g" . magit-status))
 
-;; ------ Language Server Protocol (LSP) ------
+;; Language Server Protocol (LSP)
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-c l")
   :hook ((python-mode . lsp-deferred)
          (c-mode . lsp-deferred)
          (c++-mode . lsp-deferred)
-	 (go-mode . lsp-deferred)
+         (go-mode . lsp-deferred)
          (js-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
          (typescript-mode . lsp-deferred)
@@ -147,7 +148,7 @@
         lsp-ui-sideline-enable t
         lsp-ui-sideline-show-hover t))
 
-;; ------ Python Configuration ------
+;; Python Configuration
 (use-package python-mode
   :mode "\\.py\\'"
   :interpreter "python3"
@@ -159,16 +160,7 @@
   :after python-mode
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
-;; ------ Go Configuration ------
-(use-package go-mode
-  :mode "\\.go\\'"
-  :hook ((go-mode . (lambda ()
-                      (setq indent-tabs-mode t)
-                      (setq tab-width 4))))
-  :config
-  (setq gofmt-command "goimports"))
-
-;; ------ C/C++ Configuration ------
+;; C/C++ Configuration
 (add-hook 'c-mode-hook
           (lambda ()
             (setq c-basic-offset 4
@@ -189,6 +181,18 @@
                                (setq clang-format-style "Google")
                                (add-hook 'before-save-hook 'clang-format-buffer nil t))))
 
+;; Go Configuration
+(use-package go-mode
+  :mode "\\.go\\'"
+  :hook (go-mode . lsp-deferred)
+  :config
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook' #'gofmt-before-save nil t)
+  :bind (:map go-mode-map
+	  ("C-c C-r" . go-run)
+	  ("C-c C-t" . go-test)))
+
+;; Web Configuration
 (use-package web-mode
   :mode ("\\.html?\\'"
          "\\.css\\'"
@@ -224,7 +228,7 @@
 (use-package prettier-js
   :hook ((js2-mode web-mode json-mode) . prettier-js-mode))
 
-;; ------ Keybindings and Utilities ------
+;; Keybindings and Utilities
 (defun open-init-file ()
   "Open configuration file"
   (interactive)
@@ -270,7 +274,7 @@
 
 (global-set-key (kbd "C-c r") 'run-current-file)
 
-;; ------ Final Setup ------
+;; Final Setup
 (setq-default mode-line-format
   '("%e" mode-line-front-space
     mode-line-mule-info
