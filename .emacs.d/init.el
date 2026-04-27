@@ -122,12 +122,8 @@
   :hook ((python-mode . lsp-deferred)
          (c-mode . lsp-deferred)
          (c++-mode . lsp-deferred)
-         (go-mode . lsp-deferred)
          (js-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
-         (typescript-mode . lsp-deferred)
-	 (typescript-tsx-mode . lsp-deferred)
-	 (tsx-ts-mode . lsp-deferred)
          (web-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :config
@@ -181,25 +177,12 @@
                                (setq clang-format-style "Google")
                                (add-hook 'before-save-hook 'clang-format-buffer nil t))))
 
-;; Go Configuration
-(use-package go-mode
-  :mode "\\.go\\'"
-  :hook (go-mode . lsp-deferred)
-  :config
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook' #'gofmt-before-save nil t)
-  :bind (:map go-mode-map
-	  ("C-c C-r" . go-run)
-	  ("C-c C-t" . go-test)))
-
 ;; Web Configuration
 (use-package web-mode
   :mode ("\\.html?\\'"
          "\\.css\\'"
          "\\.jsx?\\'"
-         "\\.tsx?\\'"
-         "\\.vue\\'"
-         "\\.svelte\\'")
+         "\\.vue\\'")
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
@@ -213,13 +196,6 @@
   (setq js2-basic-offset 2
         js-indent-level 2)
   :hook (js2-mode . (lambda () (setq indent-tabs-mode nil))))
-
-(use-package typescript-mode
-  :ensure t
-  :mode "\\.ts\\'"
-  :mode "\\.tsx\\'"
-  :config
-  (setq typescript-indent-level 2))
 
 (use-package json-mode
   :mode "\\.json\\'"
@@ -242,7 +218,6 @@
   (cond
    ((derived-mode-p 'python-mode) (python-black-buffer))
    ((derived-mode-p 'c-mode 'c++-mode) (clang-format-buffer))
-   ((derived-mode-p 'go-mode) (gofmt))
    ((derived-mode-p 'web-mode 'js2-mode) (prettier-js))
    (t (indent-region (point-min) (point-max)))))
 
@@ -268,8 +243,6 @@
                        (file-name-sans-extension file-name))))
      ((string-match "\\.js$" file-name)
       (compile (format "node %s" file-name)))
-     ((string-match "\\.go$" file-name)
-      (compile (format "go run %s" file-name)))
      (t (message "No runner defined for this file type")))))
 
 (global-set-key (kbd "C-c r") 'run-current-file)
